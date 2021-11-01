@@ -8,6 +8,7 @@ import datetime as dt
 import time
 import os
 import dotenv
+from psaw import PushshiftAPI
 
 # Create your views here.
 
@@ -50,34 +51,7 @@ def dataget(request):
 
 
 def test_data(request):
-    reddit = praw.Reddit(client_id='PwzYIOrHfdlKkPGD7ThIEw', \
-                     client_secret='pYMG5FBScurIhDku1jYGtbYD5RUSIw ', \
-                     user_agent='radditbot', \
-                     username='sunilpragroot', \
-                     password='Rajput@1996')
-    subreddit = reddit.subreddit('Nootropics')
-    # subreddit = reddit.subreddit()
-    top_subreddit = subreddit.top(limit=50)
-    print(top_subreddit)
-    topics_dict = { "title":[], 
-                "score":[], 
-                "id":[], "url":[], 
-                "comms_num": [], 
-                "created": [], 
-                "body":[]}
-    # for submission in top_subreddit:
-    #     topics_dict["title"].append(submission.title)
-    #     topics_dict["score"].append(submission.score)
-    #     topics_dict["id"].append(submission.id)
-    #     topics_dict["url"].append(submission.url)
-    #     topics_dict["comms_num"].append(submission.num_comments)
-    #     topics_dict["created"].append(submission.created)
-    #     topics_dict["body"].append(submission.selftext)
-    # topics_data = pd.DataFrame(topics_dict)
-    # print("==> ", topics_data)
-    # # for i in reddits:
-    # #     print("=> ", i)
-    print("=====================> : <=====================")
-    for submission in subreddit.top(limit=1):
-        print("=> ", submission.title, submission.id)
-    return JsonResponse({"Data": "Ok"})
+    api = PushshiftAPI()
+    most_recent_subs = api.search_submissions(limit=1000)
+    # results = (most_recent_subs)
+    return   HttpResponse( most_recent_subs)
