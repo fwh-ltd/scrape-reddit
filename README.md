@@ -1,3 +1,8 @@
 # scrape-reddit
 
-# Add
+### Local Setup in ubuntu
+
+```
+
+
+```
