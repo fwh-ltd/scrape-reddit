@@ -2,7 +2,7 @@ import json
 import os
 import requests
 import time
-from bs4 import BeautifulSoup
+
 
 def write_to_file(data, **kwargs):
     '''Writes a string to a file'''
