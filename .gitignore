@@ -1,0 +1,6 @@
+__pycache__/
+.vscode
+api/__pycache__/
+reddit_django/__pycache__/
+venv
+.env
